@@ -1,0 +1,45 @@
+[{  "id":"1",
+    "username":"admin",
+    "name":"admin",
+    "email":"admin@gmail.com",
+    "role":"administrator",
+    "permits":["Read","Edit","Share"]
+},
+{   "id":"2",
+    "username":"pprd",
+    "name":"pprd",
+    "email":"pprd@gmail.com",
+    "role":"user",
+    "permits":["None"]
+},
+{   "id":"3",
+    "username":"No.8265",
+    "name":"Min Thant",
+    "email":"minthant@gmail.com",
+    "role":"shop one manager",
+    "permits":["Check"]
+},
+{   "id":"4",
+    "username":"No.2562",
+    "name":"Aye Zaw",
+    "email":"ayezaw@gmail.com",
+    "role":"shop two manager",
+    "permits":["Check"]
+},
+{   "id":"5",
+    "username":"No.7289",
+    "name":"Myint Maung",
+    "email":"myintmaung@gmail.com",
+    "role":"widget manager",
+    "permits":["Check"]
+},
+{   "id":"6",
+    "username":"No.9236",
+    "name":"Hein Htet Aung",
+    "email":"heinhtet@gmail.com",
+    "role":"shop manager",
+    "permits":["Check"]
+
+}
+
+]

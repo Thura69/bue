@@ -1,0 +1,151 @@
+import React, { useRef,useEffect } from 'react'
+import MOCK_DATA from '../../assets/data/MOCK_DATA-3.json';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+
+function FuelDataInput() {
+    const fuelDateRef = useRef();
+    const fuelCodeRef = useRef();
+    const driverRef = useRef();
+    const bowserRef = useRef();
+    const tankRef = useRef();
+    const stationRef = useRef();
+    const balaceRef = useRef();
+    const recieveRef = useRef();
+    const bookVolumeRef = useRef();
+    const remarkRef = useRef();
+    const user = useSelector((state) => state.login);
+    const navigate = useNavigate();
+  
+
+  useEffect(() => {
+    if (!user.login) {
+        navigate("/");
+    }
+  },[navigate,user])
+    
+
+    const lastData = MOCK_DATA.slice(MOCK_DATA.length - 1, MOCK_DATA.length);
+    
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const newdata = {
+            fuel_in_date: fuelDateRef.current.value,
+            fuel_in_code: fuelCodeRef.current.value,
+            driver: driverRef.current.value,
+            bowser: bowserRef.current.value,
+            tank: tankRef.current.vlaue,
+            station: stationRef.current.value,
+            tank_balance: balaceRef.current.value,
+            remark:remarkRef.current.value
+        }
+
+        MOCK_DATA.push(newdata);
+    }
+
+
+    const div = "flex items-center justify-start gap-2 mt-2";
+    const two = "flex mt-3 items-center justify-evenly gap-3";
+    const input = "rounded-sm border-[0.8px] border-black p-2";
+    const header = "text-md w-[200px]";
+    const tableHeader = "flex-1 flex items-center justify-center p-2 border-[0.8px] bg-green-600";
+    const tableChild = "flex-1 flex items-center justify-start p-2 border-[0.8px] bg-gray-100";
+
+  return (
+      <div className='mt-[100px]'>
+          <div className='w-[98%] py-[40px] mx-auto'>
+              <h3 className='text-2xl font-extrabold'>Fuel Data Input</h3>
+              <div className=' p-4 mt-[40px] bg-gray-300'>
+                  <form onSubmit={handleSubmit}>
+                      <div className={two}>
+                          <div className={div}>
+                          <h3 className={header}>Fuel in Date :</h3>
+                          <input ref={fuelDateRef} className={input} placeholder="dd/MM/yyyy"/>
+                      </div>
+                      <div className={div}>
+                          <h3 className={header}>Fuel in Code :</h3>
+                          <input ref={fuelCodeRef} className={input} placeholder="####"/>
+                      </div>
+                      </div>
+                      <div className={two}>
+                            <div className={div}>
+                          <h3 className={header}>Driver</h3>
+                          <input ref={driverRef} className={input} placeholder="Mg Mg"/>
+                      </div>
+                      <div className={div}>
+                          <h3 className={header}>Bowser</h3>
+                          <input ref={bowserRef} className={input} placeholder="Ground #####"/>
+                      </div>
+                    </div>
+                    <div className={two}>
+                           <div className={div}>
+                          <h3 className={header}>Tank</h3>
+                          <input ref={tankRef} className={input} placeholder="000000"/>
+                      </div>
+                      <div className={div}>
+                          <h3 className={header}>Station</h3>
+                          <input ref={stationRef} className={input} placeholder="KMHCT4AE9DU113591"/>
+                      </div>
+                    </div>
+                      <div className={two}>
+                           <div className={div}>
+                          <h3 className={header}>Tank Balance</h3>
+                          <input ref={balaceRef} className={input} placeholder="0000"/>
+                      </div>
+                      <div className={div}>
+                          <h3 className={header}>Recieve Volume(li)</h3>
+                          <input ref={recieveRef} className={input} placeholder="000"/>
+                      </div>
+                    </div>
+                      <div className={two}>
+                           <div className={div}>
+                          <h3 className={header}>Book Volume(li)</h3>
+                          <input ref={bookVolumeRef} className={input} placeholder="0000"/>
+                      </div>
+                      <div className={div}>
+                          <h3 className={header}>Remark</h3>
+                          <input ref={remarkRef} className={input} placeholder="0.0.0.0 "/>
+                      </div>
+                    </div>
+                      <div className='flex-1 mt-12 flex items-center justify-center gap-6'>
+              <button type='onSubmit' className=' bg-green-500 w-[100px] h-[40px] rounded-md' >Add</button>
+              <button className=' bg-red-500 w-[100px] h-[40px] rounded-md'>Cancel</button>
+
+          </div>
+                  </form>
+              </div>
+              <div className='mt-3'>
+                  <h3>Last Data</h3>
+              </div>
+              <div className=' flex flex-col mt-3  bg-blue-100'>
+            <div className=' text-sm text-center flex'>
+                  <div className={tableHeader}>Fuel in Date</div>
+                  <div className={tableHeader}>Fuel in Code</div>
+                  <div className={tableHeader}>Driver</div>
+                  <div className={tableHeader}>Bowser</div>
+                  <div className={tableHeader}>Tank</div>
+                  <div className={tableHeader}>Station</div>
+                  <div className={tableHeader}>Tank Balance</div>
+                  <div className={tableHeader}>Recieve Volume(li)</div>
+                  <div className={tableHeader}>Book Volume(li)</div>
+                  <div className={tableHeader}>Remark</div>
+              </div>
+              <div className=' text-sm text-center flex'>
+                  <div className={tableChild}>{lastData[0].fuel_in_date}</div>
+                  <div className={tableChild}>{lastData[0].fuel_in_code}</div>
+                  <div className={tableChild}>{lastData[0].driver}</div>
+                  <div className={tableChild}>{lastData[0].bowser}</div>
+                  <div className={tableChild}>{lastData[0].tank}</div>
+                  <div className={tableChild}>{lastData[0].staion}</div>
+                  <div className={tableChild}>{lastData[0].tank_balance}</div>
+                  <div className={tableChild}>{lastData[0]['recieve_volume(Li)']}</div>
+                  <div className={tableChild}>{lastData[0]['book_volume(Li)']}</div>
+                  <div className={tableChild}>{lastData[0].remark}</div>
+            </div>
+            </div>
+          </div>
+    </div>
+  )
+}
+
+export default FuelDataInput

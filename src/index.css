@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+body{
+    font-family: 'Poppins', sans-serif;
+}
+
+/* table css */
+
+table {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+table td,
+table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+table tr:hover {
+    background-color: #ddd;
+}
+
+table th, tfoot td{
+    padding-top: 12px;
+    padding-bottom: 12px;
+    font-size: 14px;
+    text-align: center;
+    background-color: #04AA6D;
+    color: white;
+}
+
+.neumorphism_card{
+border-radius: 21px;
+    background: linear-gradient(145deg, #cacaca, #f0f0f0);
+    box-shadow: 35px 35px 70px #a8a8a8,
+        -35px -35px 70px #ffffff;
+}
+
+.neumorphism_circle{
+border-radius: 50%;
+    background: linear-gradient(145deg, #d4d4d4, #fbfbfb);
+    box-shadow: 25px 25px 50px #b0b0b0,
+        -25px -25px 50px #ffffff;
+}
